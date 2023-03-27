@@ -21,9 +21,9 @@ export const getPageStaticProps = async (context) => {
               }
             }
             seo {
-              title
-              metaDesc
-            }
+            title
+            metaDesc
+          }
           }
           ... on Property {
             id

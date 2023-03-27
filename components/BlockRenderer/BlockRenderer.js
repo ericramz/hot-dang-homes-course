@@ -10,10 +10,29 @@ import { PropertySearch } from "components/PropertySearch";
 import { PostTitle } from "components/PostTitle";
 import Image from "next/image";
 import { theme } from "theme";
+import { Gallery } from "components/Gallery";
+import { TickItem } from "components/TickItem";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "acf/tickitem": {
+        return (
+          <TickItem key={block.id}>
+            <BlockRenderer blocks={block.innerBlocks} />
+          </TickItem>
+        );
+      }
+      case "core/gallery": {
+        return (
+          <Gallery
+            key={block.id}
+            columns={block.attributes.columns || 3}
+            cropImages={block.attributes.imageCrop}
+            items={block.innerBlocks}
+          />
+        );
+      }
       case "acf/formspreeform": {
         return (
           <FormspreeForm

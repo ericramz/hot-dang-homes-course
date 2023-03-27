@@ -13,7 +13,7 @@ export const PropertyFeatures = () => {
           <FontAwesomeIcon icon={faBed} /> {propertyFeatures.bedrooms} bedrooms
         </div>
         <div>
-          <FontAwesomeIcon icon={faBath} /> {propertyFeatures.bathrooms} 
+          <FontAwesomeIcon icon={faBath} /> {propertyFeatures.bathrooms}{" "}
           bathrooms
         </div>
         <div>
