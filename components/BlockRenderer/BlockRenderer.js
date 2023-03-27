@@ -1,16 +1,30 @@
-import { Cover } from "components/Cover";
-import { Heading } from "components/Heading";
-import { theme } from "theme";
-import { Paragraph } from "components/Paragraph";
 import { CallToActionButton } from "components/CallToActionButton";
-import { Columns } from "components/Columns";
 import { Column } from "components/Column";
-import Image from "next/image";
+import { Columns } from "components/Columns";
+import { Cover } from "components/Cover";
+import { FormspreeForm } from "components/FormspreeForm";
+import { Heading } from "components/Heading";
+import { Paragraph } from "components/Paragraph";
+import { PropertyFeatures } from "components/PropertyFeatures";
 import { PropertySearch } from "components/PropertySearch";
+import { PostTitle } from "components/PostTitle";
+import Image from "next/image";
+import { theme } from "theme";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "acf/formspreeform": {
+        return (
+          <FormspreeForm
+            key={block.id}
+            formId={block.attributes.data.form_id}
+          />
+        );
+      }
+      case "acf/propertyfeatures": {
+        return <PropertyFeatures key={block.id} />;
+      }
       case "acf/ctabutton": {
         return (
           <CallToActionButton
@@ -44,7 +58,15 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
-
+      case "core/post-title": {
+        return (
+          <PostTitle
+            key={block.id}
+            level={block.attributes.level}
+            textAlign={block.attributes.textAlign}
+          />
+        );
+      }
       case "acf/propertysearch": {
         return <PropertySearch key={block.id} />;
       }

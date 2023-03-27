@@ -6,7 +6,7 @@ export const CallToActionButton = ({
   destination,
 }) => {
   const alignMap = {
-    left: "text-left",
+    left: "text-align",
     center: "text-center",
     right: "text-right",
   };
